@@ -15,3 +15,6 @@
 
 # MISC
 runcpm
+Debug/play-tune.log
+*.REL
+*.PRN

@@ -1,0 +1,27 @@
+M80PATH=D:/M80
+
+.SUFFIXES: .ASM .REL .BIN
+
+.ASM.REL:
+	M80 '=$< /I/L'
+
+clean:
+	del *.REL
+	del *.PRN
+	del *.BIN
+
+all: AY.COM PL.COM
+
+
+AY.COM: AY.Z80
+	sjasm AY.Z80 AY.COM
+
+PLAY.REL: PLAY.Z80
+#	sjasm PLAY.Z80 PL.COM
+	M80 =PLAY.Z80/Z/L
+
+PL.REL: PL.Z80
+	M80 =$</Z/L
+
+PL.COM: PL.REL
+	$(M80PATH)/L80 /P:100/D:1000,$<,$@/N/E

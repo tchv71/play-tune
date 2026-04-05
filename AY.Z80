@@ -1,0 +1,21 @@
+
+	ORG	000100h
+IO_RSEL		EQU	00D8h	; Register selection port
+IO_RDAT		EQU	00D0h	; Register data port
+
+	IN	A,(0FFh)
+	LD	A,0C0h
+	OUT	(0FFh),A
+
+	LD	A, 8
+	OUT (IO_RSEL),A
+	OUT (0A1h),A
+	OUT (0A2h),A
+
+	IN	A,(0FFh)
+	LD	A,81h
+	OUT	(0FFh),A
+	JP	0
+;;===============================================================================
+	END
+
